@@ -1,5 +1,23 @@
-<form action="http://data.sparkfun.com/input/QGxWK3RzNdslXlnoNddo">
-	<input type="text" name="private_key" value="JqxmeGadRlta4ajVZzzV" />
-	<input type="text" name="sensor">
+<script>
+	function check(form) {
+		form.action = document.getElementById('url').value;
+	}
+</script>
+<style>
+input {
+	display: block;
+	width:100%;
+	margin-bottom:1em;
+}
+body *{
+	font-size: 24px;
+	line-height:1;
+}
+</style>
+<form onsubmit="return check(this)">
+	<h1>Thingspeak demo</h1>
+	URL: <input type="text" id="url" value="http://data.sparkfun.com/input/QGxWK3RzNdslXlnoNddo" />
+	KEY: <input type="text" name="private_key" value="JqxmeGadRlta4ajVZzzV" />
+	value: <input type="text" name="sensor">
 	<input type="submit" value="送出" />
 </form>
