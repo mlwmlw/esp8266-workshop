@@ -14,14 +14,14 @@ srv:listen(80,function(conn)
         end
         buf = buf.."<h1>ESP8266 Web Server</h1>";
         buf = buf.."<form method=\"GET\">";
-        buf = buf.."留言：<input type=\"text\" name=\"msg\" />";
-        buf = buf.."<input type=\"submit\" value=\"送出\" />";
+        buf = buf.."leave a message: <input type=\"text\" name=\"msg\" />";
+        buf = buf.."<input type=\"submit\" />";
         buf = buf.."</form>";
-
-        i2c.setup(0, 2, 1, i2c.SLOW)
-        lcd = dofile("lcd1602.lua")(0x20)
-        lcd.put(lcd.locate(0, 0), _GET.msg);
-
+				if(_GET.msg ~= nil)then
+					i2c.setup(0, 2, 1, i2c.SLOW)
+					lcd = dofile("lcd1602.lua")(0x20)
+					lcd.put(lcd.locate(0, 0), _GET.msg);
+				end
         client:send(buf);
         client:close();
         collectgarbage();
